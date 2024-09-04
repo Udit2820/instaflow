@@ -11,10 +11,11 @@ const useGetAllMessage = ()=>{
         const fetchAllMessage = async()=>{
             try{
                 const res= await axios.get(`http://localhost:8000/api/v2/message/all/${selectedUser?._id}`,{withCredentials:true});
+                console.log("hlooooo");
                 if(res.data.success){
                     dispatch(setMessages(res.data.messages));
-                    console.log(res.data)
                 }
+
             }catch(error){
                 console.log(error)
             }
