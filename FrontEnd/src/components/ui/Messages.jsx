@@ -4,8 +4,10 @@ import { Button } from "./button";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useGetAllMessage from "@/hooks/useGetAllMessage";
+import useGetRTM from "@/hooks/useGetRTM";
 
 function Messages({ selectedUser }) {
+  useGetRTM();
   useGetAllMessage();
   const { messages } = useSelector(store=>store.chat);
   const { user } = useSelector(store=>store.auth);
