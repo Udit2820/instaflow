@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
-import useGetUserProfile from "@/hooks/useGetUSerProfile";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button } from "./button";
 import { Badge } from "./badge";
 import { AtSign, Heart, MessageCircle } from "lucide-react";
+import useGetUserProfile from "@/hooks/useGetUserProfile";
 
 function Profile() {
   const params = useParams();
