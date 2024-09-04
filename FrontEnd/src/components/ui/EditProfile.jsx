@@ -43,7 +43,7 @@ const editProfileHandler=async()=>{
         }
     try{
         setLoading(true);
-        const res = await axios.post('http://localhost:8000/api/v2/user/profile/edit',formData,{
+        const res = await axios.post('https://instaflow.onrender.com/api/v2/user/profile/edit',formData,{
             headers: {
                 'Content-Type':'multipart/form-data',
             },

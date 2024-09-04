@@ -26,7 +26,7 @@ function Login() {
     console.log(input)
     try{
       setLoading(true);
-      const res=await axios.post('http://localhost:8000/api/v2/user/login',input,{
+      const res=await axios.post('https://instaflow.onrender.com/api/v2/user/login',input,{
         headers: {
             'Content-Type': 'application/json',
         },

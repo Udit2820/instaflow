@@ -20,7 +20,7 @@ function ChatPage() {
   const sendMessageHandler = async (receiverId) => {
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/v2/message/send/${receiverId}`,
+        `https://instaflow.onrender.com//api/v2/message/send/${receiverId}`,
         { textMessage },
         {
           headers: { "Content-Type": "application/json" },

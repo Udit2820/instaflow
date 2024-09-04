@@ -38,7 +38,7 @@ function CreatePost({ open, setOpen }) {
     try {
       setLoading(true); // Start loading
       const res = await axios.post(
-        "http://localhost:8000/api/v2/post/addpost",
+        "https://instaflow.onrender.com/api/v2/post/addpost",
         formData,
         {
           headers: {

@@ -21,7 +21,7 @@ function LeftSidebar() {
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/v2/user/logout", {
+      const res = await axios.get("https://instaflow.onrender.com/api/v2/user/logout", {
         withCredentials: true,
       });
       if (res.data.success) {

@@ -35,7 +35,7 @@ function Post({ post }) {
   const deletePostHandler = async () => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/v2/post/delete/${post?._id}`,
+        `https://instaflow.onrender.com/api/v2/post/delete/${post?._id}`,
         {
           withCredentials: true,
         }
@@ -57,7 +57,7 @@ function Post({ post }) {
     try {
       const action = liked ? "dislike" : "like";
       const res = await axios.get(
-        `http://localhost:8000/api/v2/post/${post._id}/${action}`,
+        `https://instaflow.onrender.com/v2/post/${post._id}/${action}`,
         {
           withCredentials: true,
         }
@@ -88,7 +88,7 @@ function Post({ post }) {
 
   const commentHandler = async()=>{
     try{
-      const res= await axios.post(`http://localhost:8000/api/v2/post/${post._id}/comment`,{text},{
+      const res= await axios.post(`https://instaflow.onrender.com/api/v2/post/${post._id}/comment`,{text},{
         headers:{ 'Content-Type': 'application/json'},
         withCredentials:true
     });
@@ -110,7 +110,7 @@ function Post({ post }) {
 
   const bookmarkHandler = async ()=>{
       try{
-        const res= await axios.get(`http://localhost:8000/api/v2/post/${post._id}/saved`,{
+        const res= await axios.get(`https://instaflow.onrender.com/api/v2/post/${post._id}/saved`,{
           withCredentials:true
         });
         if(res.data.success){
