@@ -15,14 +15,6 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve();
 // console.log(__dirname);
-
-
-app.get("/",(_,res)=>{
-    return res.status(200).json({
-        message:"I'm coming from backend",
-        success:true
-    })
-})
 // middleware
 app.use(express.json());
 app.use(cookieParser());
@@ -42,7 +34,7 @@ app.use("/api/v2/message",messageRoute);
 
 app.use(express.static(path.join(__dirname,"/frontend/dist")));
 app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"))
+    res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
 })
 
 
