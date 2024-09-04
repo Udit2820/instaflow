@@ -8,11 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAuthUser } from "@/redux/authSlice";
 import CreatePost from "./CreatePost";
 import { setPosts, setSelectedPost } from "@/redux/postSlice";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import { Button } from "./button";
 
 
 function LeftSidebar() {
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
+  const {likeNotification} = useSelector(store=>store.realTimeNotification);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
@@ -81,6 +84,35 @@ function LeftSidebar() {
               >
                 {item.icon}
                 <span>{item.text}</span>
+                {
+                  item.text === "Notifications" && likeNotification.length > 0 && (
+                    <Popover>
+                      <PopoverTrigger>
+                        <div>
+                          <Button size='icon' className="rounded-full h-5 w-5 absolute bottom-6 left-6 bg-red-600 hover:bg-red-600" >{likeNotification.length}</Button>
+                        </div>
+                      </PopoverTrigger>
+                      <PopoverContent>
+                        <div>
+                          {
+                            likeNotification.length===0 ? (<p>No new Notification</p>) : (
+                            likeNotification.map((notification)=>{
+                              return(
+                                <div key={notification.userId} className="flex items-center gap-2 my-2">
+                                  <Avatar>
+                                    <AvatarImage src={notification.userDetails?.profilePicture}></AvatarImage>
+                                    <AvatarFallback>CN</AvatarFallback>
+                                  </Avatar>
+                                  <p className="text-sm"><span className="font-bold">{notification.userDetails?.username}</span> liked tour post</p>
+                                </div>
+                                )
+                            })
+                          )}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  )
+                }
               </div>
             );
           })}
