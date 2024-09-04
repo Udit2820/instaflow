@@ -108,8 +108,6 @@ function Post({ post }) {
     }
   }
 
- 
-
   return (
     <div className="my-8 w-full max-w-sm max-auto">
       <div className="flex items-center justify-between">

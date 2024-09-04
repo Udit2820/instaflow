@@ -15,7 +15,6 @@ import {
 import storage from "redux-persist/lib/storage";
 import postSlice from "./postSlice.js";
 import chatSlice from "./chatSlice.js";
-import rtnSlice from "./rtnSlice.js";
 
 
 const persistConfig = {
@@ -29,7 +28,6 @@ const rootReducer= combineReducers({
     post:postSlice,
     socketio:socketSlice,
     chat:chatSlice,
-    realTimeNotification:rtnSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
