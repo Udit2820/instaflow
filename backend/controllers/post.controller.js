@@ -3,7 +3,7 @@ import cloudinary from "../utils/cloudinary.js";
 import { Post } from "../models/post.model.js";
 import { User } from "../models/user.model.js";
 import { Comment } from "../models/comment.model.js";
-import { getReceiverSocketId , io } from "../socket/socket.js";
+import { getReceiverSocketId , io} from "../socket/socket.js";
 
 export const addNewPost = async (req,res) => {
     try{
@@ -235,19 +235,19 @@ export const deletePost = async (req,res) => {
 
 export const bookmarkPost = async (req,res) =>{
     try{
-        const postId = req.params.postId;
+        const postId = req.params.id;
         const authorId = req.id;
         const post = await Post.findById(postId);
         if(!post) return res.status(404).json({message:'Post not found', success:false});
 
         const user = await User.findById(authorId);
-        if(user.saved.includes(post._id)){
-            await User.updateOne({$pull:{saved:post._id}});
+        if(user.Saved.includes(post._id)){
+            await user.updateOne({$pull:{Saved:post._id}});
             await user.save();
             return res.status(200).json({type:'unsaved',message:'Post unsaved successfully', success:true});
         }
         else{
-            await User.updateOne({$addToSet:{saved:post._id}});
+            await user.updateOne({$addToSet:{Saved:post._id}});
             await user.save();
             return res.status(200).json({type:'saved',message:'Post saved successfully', success:true});
 

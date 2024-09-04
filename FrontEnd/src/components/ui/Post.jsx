@@ -145,12 +145,14 @@ function Post({ post }) {
             <MoreHorizontal className="cursor-pointer" />
           </DialogTrigger>
           <DialogContent className="flex flex-col items-center text-sm text-center">
-            <Button
+          {
+            post?.author?._id !== user?._id &&  <Button
               variant="ghost"
               className="cursor-pointer w-fit text-[#ED4956] font-bold"
             >
               Unfollow
             </Button>
+          }
             <Button variant="ghost" className="cursor-pointer w-fit ">
               Add to favorites
             </Button>
