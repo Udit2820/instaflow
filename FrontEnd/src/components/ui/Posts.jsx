@@ -11,11 +11,7 @@ function Posts() {
 
   return (
     <div>
-      {posts
-        .filter(post => post && post._id) // Filter out null, undefined, or invalid posts
-        .map(post => (
-          <Post key={post._id} post={post} />
-        ))}
+      {posts.map((post) => <Post key={post._id} post={post}/>)}
     </div>
   );
 }
