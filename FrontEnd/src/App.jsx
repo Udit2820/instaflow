@@ -15,12 +15,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setSocket } from './redux/socketSlice'
 import { setOnlineUsers } from './redux/chatSlice'
 import { setLikeNotification } from './redux/rtnSlice'
+import ProtectedRoutes from './components/ui/ProtectedRoutes'
 
 
 const browserRouter = createBrowserRouter([
   {
     path:"/",
-    element:<MainLayout/>,
+    element:<ProtectedRoutes><MainLayout/></ProtectedRoutes>,
     children: [{
       path:"/",
       element:<Home/>,
