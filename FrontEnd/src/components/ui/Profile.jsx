@@ -15,7 +15,6 @@ function Profile() {
   const { userProfile, user } = useSelector((store) => store.auth);
   // console.log(userProfile);
   const isLoggedInUserProfile = user?._id === userProfile?._id;
-  const isFollowing = false;
   const handleTabChange = (tab) => {
     setActivetab(tab);
   };
