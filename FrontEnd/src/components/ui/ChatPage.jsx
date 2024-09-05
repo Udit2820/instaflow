@@ -12,9 +12,9 @@ import { setMessages } from "@/redux/chatSlice";
 function ChatPage() {
   const [textMessage, setTextMessage] = useState("");
   const { user, suggestedUsers, selectedUser } = useSelector(
-    (store) => store.auth
+    store => store.auth
   );
-  const { onlineUsers, messages } = useSelector((store) => store.chat);
+  const { onlineUsers, messages } = useSelector(store => store.chat);
   const dispatch = useDispatch();
 
   const sendMessageHandler = async (receiverId) => {
@@ -74,8 +74,7 @@ function ChatPage() {
                 </div>
               </div>
             );
-          })
-          }
+          })}
         </div>
       </section>
       {selectedUser ? (

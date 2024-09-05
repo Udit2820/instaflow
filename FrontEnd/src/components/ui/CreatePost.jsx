@@ -16,9 +16,9 @@ function CreatePost({ open, setOpen }) {
   const [caption, setCaption] = useState("");
   const [imagePreview, setImagePreview] = useState("");
   const [loading, setLoading] = useState(false); // Changed initial state to false
-  const {user}=useSelector(store=>store.auth);
-  const dispatch=useDispatch();
-  const {posts} = useSelector(store=>store.post);
+  const { user } = useSelector(store => store.auth);
+  const dispatch = useDispatch();
+  const { posts } = useSelector(store => store.post);
 
   const fileChangeHandler = async (e) => {
     const file = e.target.files?.[0];
@@ -48,7 +48,7 @@ function CreatePost({ open, setOpen }) {
         }
       );
       if (res.data.success) {
-        dispatch(setPosts([res.data.post,...posts])); // modify append new value 
+        dispatch(setPosts([res.data.post, ...posts])); // modify append new value
         toast.success(res.data.message);
         setOpen(false);
       }
@@ -102,8 +102,8 @@ function CreatePost({ open, setOpen }) {
         >
           Select From Computer
         </Button>
-        {imagePreview && (
-          loading ? (
+        {imagePreview &&
+          (loading ? (
             <Button>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Please wait
@@ -116,8 +116,7 @@ function CreatePost({ open, setOpen }) {
             >
               Post
             </Button>
-          )
-        )}
+          ))}
       </DialogContent>
     </Dialog>
   );

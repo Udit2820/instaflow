@@ -1,4 +1,12 @@
-import { Heart,Home,LogOut, MessageCircle, PlusSquare, Search, TrendingUp} from "lucide-react";
+import {
+  Heart,
+  Home,
+  LogOut,
+  MessageCircle,
+  PlusSquare,
+  Search,
+  TrendingUp,
+} from "lucide-react";
 import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { useNavigate } from "react-router-dom";
@@ -11,19 +19,23 @@ import { setPosts, setSelectedPost } from "@/redux/postSlice";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Button } from "./button";
 
-
 function LeftSidebar() {
   const navigate = useNavigate();
-  const { user } = useSelector(store => store.auth);
-  const {likeNotification} = useSelector(store=>store.realTimeNotification);
+  const { user } = useSelector((store) => store.auth);
+  const { likeNotification } = useSelector(
+    (store) => store.realTimeNotification
+  );
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get("https://instaflow.onrender.com/api/v2/user/logout", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://instaflow.onrender.com/api/v2/user/logout",
+        {
+          withCredentials: true,
+        }
+      );
       if (res.data.success) {
         dispatch(setAuthUser(null));
         dispatch(setSelectedPost(null));
@@ -41,15 +53,12 @@ function LeftSidebar() {
       logoutHandler();
     } else if (textType === "Create") {
       setOpen(true);
-    }
-    else if(textType==="Profile"){
-      navigate(`/profile/${user?._id}`)
-    }
-    else if(textType==="Home"){
-      navigate("/")
-    }
-    else if(textType==="Messages"){
-      navigate("/chat")
+    } else if (textType === "Profile") {
+      navigate(`/profile/${user?._id}`);
+    } else if (textType === "Home") {
+      navigate("/");
+    } else if (textType === "Messages") {
+      navigate("/chat");
     }
   };
   const sidebarItems = [
@@ -84,41 +93,58 @@ function LeftSidebar() {
               >
                 {item.icon}
                 <span>{item.text}</span>
-                {
-                  item.text === "Notifications" && likeNotification.length > 0 && (
+                {item.text === "Notifications" &&
+                  likeNotification.length > 0 && (
                     <Popover>
                       <PopoverTrigger>
                         <div>
-                          <Button size='icon' className="rounded-full h-5 w-5 absolute bottom-6 left-6 bg-red-600 hover:bg-red-600" >{likeNotification.length}</Button>
+                          <Button
+                            size="icon"
+                            className="rounded-full h-5 w-5 absolute bottom-6 left-6 bg-red-600 hover:bg-red-600"
+                          >
+                            {likeNotification.length}
+                          </Button>
                         </div>
                       </PopoverTrigger>
                       <PopoverContent>
                         <div>
-                          {
-                            likeNotification.length===0 ? (<p>No new Notification</p>) : (
-                            likeNotification.map((notification)=>{
-                              return(
-                                <div key={notification.userId} className="flex items-center gap-2 my-2">
+                          {likeNotification.length === 0 ? (
+                            <p>No new Notification</p>
+                          ) : (
+                            likeNotification.map((notification) => {
+                              return (
+                                <div
+                                  key={notification.userId}
+                                  className="flex items-center gap-2 my-2"
+                                >
                                   <Avatar>
-                                    <AvatarImage src={notification.userDetails?.profilePicture}></AvatarImage>
+                                    <AvatarImage
+                                      src={
+                                        notification.userDetails?.profilePicture
+                                      }
+                                    ></AvatarImage>
                                     <AvatarFallback>CN</AvatarFallback>
                                   </Avatar>
-                                  <p className="text-sm"><span className="font-bold">{notification.userDetails?.username}</span> liked tour post</p>
+                                  <p className="text-sm">
+                                    <span className="font-bold">
+                                      {notification.userDetails?.username}
+                                    </span>{" "}
+                                    liked tour post
+                                  </p>
                                 </div>
-                                )
+                              );
                             })
                           )}
                         </div>
                       </PopoverContent>
                     </Popover>
-                  )
-                }
+                  )}
               </div>
             );
           })}
         </div>
       </div>
-      <CreatePost open={open} setOpen={setOpen}/>
+      <CreatePost open={open} setOpen={setOpen} />
     </div>
   );
 }
