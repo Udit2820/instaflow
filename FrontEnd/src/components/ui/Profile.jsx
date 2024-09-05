@@ -62,7 +62,7 @@ function Profile() {
                       Add Tools
                     </Button>
                   </>
-                ) : isFollowing ? (
+                ) : ( isFollowing ? (
                   <>
                     <Button variant="secondary" className=" h-8">
                       Unfollow
@@ -70,12 +70,14 @@ function Profile() {
                     <Button variant="secondary" className=" h-8">
                       Message
                     </Button>
-                  </>
+                </>
                 ) : (
                   <Button className="bg-[#0095f6] hover:bg-[#35a0e8] h-8">
                     Follow
                   </Button>
-                )}
+                )
+                )
+                }
               </div>
               <div className="flex items-center gap-4">
                 <p>
