@@ -13,6 +13,7 @@ const useGetAllMessage = ()=>{
                 const res= await axios.get(`https://instaflow.onrender.com/api/v2/message/all/${selectedUser?._id}`,{withCredentials:true});
                 console.log("hlooooo");
                 if(res.data.success){
+                    debugger
                     dispatch(setMessages(res.data.messages));
                 }
 
