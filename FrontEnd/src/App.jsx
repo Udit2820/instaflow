@@ -24,19 +24,19 @@ const browserRouter = createBrowserRouter([
     element:<ProtectedRoutes><MainLayout/></ProtectedRoutes>,
     children: [{
       path:"/",
-      element:<Home/>,
+      element:<ProtectedRoutes><Home/></ProtectedRoutes>
     },
     {
       path:"/profile/:id",
-      element:<Profile/>,
+      element:<ProtectedRoutes><Profile/></ProtectedRoutes>,
     },
     {
       path:"/account/edit",
-      element:<EditProfile/>,
+      element:<ProtectedRoutes><EditProfile/></ProtectedRoutes>,
     },
     {
       path:"/chat",
-      element:<ChatPage/>,
+      element:<ProtectedRoutes><ChatPage/></ProtectedRoutes>,
     }
   ]
   },
@@ -56,7 +56,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
     if(user){
-      const socketio = io('http://localhost:8000',{
+      const socketio = io('https://instaflow.onrender.com',{
         query:{
           userId:user?._id,
         },
