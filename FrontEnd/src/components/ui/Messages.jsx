@@ -1,7 +1,7 @@
 
 import React from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
-import { Button } from './ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from './avatar'
+import { Button } from './button'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import useGetAllMessage from '@/hooks/useGetAllMessage'
