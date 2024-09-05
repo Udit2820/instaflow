@@ -22,7 +22,7 @@ function CommentDialog({ open, setOpen }) {
     if(selectedPost){
       setComment(selectedPost.comments);
     }
-  })
+  },[selectedPost])
 
   const changeEventHandler = (e)=>{
     const inputText = e.target.value;
@@ -89,7 +89,7 @@ function CommentDialog({ open, setOpen }) {
                 <DialogTrigger asChild>
                   <MoreHorizontal className="cursor-pointer" />
                 </DialogTrigger>
-                <DialogContent className="flex felx-col items-center text-sm text-center">
+                <DialogContent className="flex flex-col items-center text-sm text-center">
                   <div className="cursor-pointer w-full text-[#ED4956] font-bold">
                     unfollow
                   </div>

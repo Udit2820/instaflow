@@ -65,7 +65,7 @@ function ChatPage() {
                 <div className="flex flex-col ">
                   <span className="font-medium">{suggestedUser?.username}</span>
                   <span
-                    className={`text-xm font-bold ${
+                    className={`text-xs font-bold ${
                       isOnline ? "text-green-600" : "text-red-600"
                     }`}
                   >
