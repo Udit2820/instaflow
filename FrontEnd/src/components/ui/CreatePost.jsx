@@ -53,7 +53,7 @@ function CreatePost({ open, setOpen }) {
         setOpen(false);
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "An error occurred");
+      toast.error(error.response.data.message || "An error occurred");
     } finally {
       setLoading(false); // Stop loading regardless of success or failure
     }

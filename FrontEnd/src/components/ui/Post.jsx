@@ -67,12 +67,12 @@ function Post({ post }) {
         setPostLike(updatedLikes);
         setLiked(!liked);
 
-        const updatedPostData = posts.map((p) =>
+        const updatedPostData = posts.map(p =>
           p._id === post._id
             ? {
                 ...p,
                 likes: liked
-                  ? p.likes.filter((id) => id !== user._id)
+                  ? p.likes.filter(id => id !== user._id)
                   : [...p.likes, user._id],
               }
             : p
@@ -207,7 +207,7 @@ function Post({ post }) {
              }}
         className="cursor-pointer text-sm text-gray-400"
       >
-        View all {post.comments.length} Comments
+        View all {comment.length} Comments
       </span>
         )
       }

@@ -54,7 +54,7 @@ const editProfileHandler=async()=>{
                 ...user,
                 bio:res.data.user?.bio,
                 profilePicture:res.data.user?.profilePicture,
-                gender:res.data.user?.gender
+                gender:res.data.user.gender
             };
 
             dispatch(setAuthUser(updatedUserData));
@@ -91,7 +91,7 @@ const editProfileHandler=async()=>{
             </div>
           </div>
           <input ref={imageRef} onChange={fileChangeHandler} type="file" className="hidden"/>
-          <Button onClick={()=>imageRef?.current.click()} className="bg-[#0095F6] hover:bg-[#318bc7]">Chnage Photo</Button>
+          <Button onClick={()=>imageRef?.current.click()} className="bg-[#0095F6] hover:bg-[#318bc7]">Change Photo</Button>
         </div>
         <div>
             <h1 className="font-bold text-xl">Bio</h1>

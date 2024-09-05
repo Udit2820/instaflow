@@ -11,13 +11,13 @@ function Profile() {
   const params = useParams();
   const userId = params.id;
   useGetUserProfile(userId);
-  const [activeTab,setAvtivetab]=useState('posts');
-  const { userProfile , user } = useSelector((store) => store.auth);
+  const [activeTab,setActivetab]=useState('posts');
+  const { userProfile , user } = useSelector(store=> store.auth);
   // console.log(userProfile);
-  const isLogggedInUserProfile = user?._id === userProfile?._id;;
+  const isLoggedInUserProfile = user?._id === userProfile?._id;;
   const isFollowing = false;
   const handleTabChange =(tab)=>{
-    setAvtivetab(tab);
+    setActivetab(tab);
   }
 
   const displayedPost= activeTab==='posts' ? userProfile?.posts : userProfile?.Saved ;
@@ -39,7 +39,7 @@ function Profile() {
                <div className="flex items-center gap-2">
                 <span>{userProfile?.username}</span>
                 {
-                  isLogggedInUserProfile ? (
+                  isLoggedInUserProfile ? (
                     <>{/* react fragment */}
                     <Link to="/account/edit">
                     <Button variant="secondary" className="hover:bg-gray-200 h-8">Edit profile</Button>
@@ -93,7 +93,7 @@ function Profile() {
                         <Heart/>
                         <span>{post?.likes.length}</span>
                       </button>
-                      <button className="flex items-center gap-2 hover:tet-gray-300">
+                      <button className="flex items-center gap-2 hover:text-gray-300">
                         <MessageCircle/>
                         <span>{post?.comments.length}</span>
                       </button>

@@ -14,7 +14,7 @@ import { Button } from "./button";
 
 function LeftSidebar() {
   const navigate = useNavigate();
-  const { user } = useSelector((store) => store.auth);
+  const { user } = useSelector(store => store.auth);
   const {likeNotification} = useSelector(store=>store.realTimeNotification);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ function LeftSidebar() {
       if (res.data.success) {
         dispatch(setAuthUser(null));
         dispatch(setSelectedPost(null));
-        dispatch(setPosts(null));
+        dispatch(setPosts([]));
         navigate("/login");
         toast.success(res.data.message);
       }
