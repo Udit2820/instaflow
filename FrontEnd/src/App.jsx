@@ -56,7 +56,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
     if(user){
-      const socketio = io('http://localhost:8000',{
+      const socketio = io('https://instaflow.onrender.com',{
         query:{
           userId:user?._id,
         },
