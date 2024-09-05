@@ -57,7 +57,7 @@ function Post({ post }) {
     try {
       const action = liked ? "dislike" : "like";
       const res = await axios.get(
-        `https://instaflow.onrender.com/v2/post/${post._id}/${action}`,
+        `https://instaflow.onrender.com/api/v2/post/${post._id}/${action}`,
         {
           withCredentials: true,
         }
