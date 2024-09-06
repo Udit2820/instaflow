@@ -1,6 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authSlice from "./authSlice.js";
 import socketSlice from "./socketSlice.js";
+import postSlice from "./postSlice.js";
+import chatSlice from "./chatSlice.js";
+import rtnSlice from "./rtnSlice.js";
 
 
 import {
@@ -13,16 +16,13 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import postSlice from "./postSlice.js";
-import chatSlice from "./chatSlice.js";
-import rtnSlice from "./rtnSlice.js";
 
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ['socket']
+  blacklist: ['socketio'],
 };
 
 const rootReducer= combineReducers({
