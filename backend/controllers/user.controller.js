@@ -60,21 +60,21 @@ export const login = async (req, res) => {
       });
     }
     //generate token help to login
-    const token = await jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+    const token = await jwt.sign({ userId: user?._id }, process.env.SECRET_KEY, {
       expiresIn: "1d",
     });
     //populate each post if in the post array
     const populatedPosts = await Promise.all(
       user.posts.map(async (postId) => {
         const post = await Post.findById(postId);
-        if (post.author.equals(user._id)) {
+        if (post.author.equals(user?._id)) {
           return post;
         }
         return null;
       })
     );
     user = {
-      _id: user._id,
+      _id: user?._id,
       username: user.username,
       email: user.email,
       profilePicture: user.profilePicture,

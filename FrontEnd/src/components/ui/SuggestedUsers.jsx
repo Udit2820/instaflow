@@ -14,11 +14,11 @@ function SuggestedUsers() {
       {suggestedUsers.map((user) => {
         return (
           <div
-            key={user._id}
+            key={user?._id}
             className="flex items-center justify-between my-5"
           >
             <div className="flex items-center gap-2">
-              <Link to={`/profile/${user._id}`}>
+              <Link to={`/profile/${user?._id}`}>
                 <Avatar>
                   <AvatarImage
                     src={user?.profilePicture}
@@ -29,7 +29,7 @@ function SuggestedUsers() {
               </Link>
               <div>
                 <Link
-                  to={`/profile/${user._id}`}
+                  to={`/profile/${user?._id}`}
                   className="font-semibold text-xs"
                 >
                   {user?.username}

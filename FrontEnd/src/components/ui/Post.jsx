@@ -41,7 +41,7 @@ function Post({ post }) {
       );
       if (res.data.success) {
         const updatedPostData = posts.filter(
-          (postItem) => postItem._id !== post?._id
+          (postItem) => postItem?._id !== post?._id
         );
         dispatch(setPosts(updatedPostData));
         toast.success(res.data.message);
@@ -56,7 +56,7 @@ function Post({ post }) {
     try {
       const action = liked ? "dislike" : "like";
       const res = await axios.get(
-        `https://instaflow.onrender.com/api/v2/post/${post._id}/${action}`,
+        `https://instaflow.onrender.com/api/v2/post/${post?._id}/${action}`,
         {
           withCredentials: true,
         }
@@ -66,13 +66,13 @@ function Post({ post }) {
         setPostLike(updatedLikes);
         setLiked(!liked);
 
-        const updatedPostData = posts.map((p) =>
-          p._id === post._id
+        const updatedPostData = posts.map(p =>
+          p?._id === post?._id
             ? {
                 ...p,
                 likes: liked
-                  ? p.likes.filter((id) => id !== user._id)
-                  : [...p.likes, user._id],
+                  ? p.likes.filter((id) => id !== user?._id)
+                  : [...p.likes, user?._id],
               }
             : p
         );
@@ -88,7 +88,7 @@ function Post({ post }) {
   const commentHandler = async () => {
     try {
       const res = await axios.post(
-        `https://instaflow.onrender.com/api/v2/post/${post._id}/comment`,
+        `https://instaflow.onrender.com/api/v2/post/${post?._id}/comment`,
         { text },
         {
           headers: { "Content-Type": "application/json" },
@@ -99,7 +99,7 @@ function Post({ post }) {
         const updatedCommentData = [...comment, res.data.comment];
         setComment(updatedCommentData);
         const updatedPostData = posts.map((p) =>
-          p._id === post._id ? { ...p, comments: updatedCommentData } : p
+          p?._id === post?._id ? { ...p, comments: updatedCommentData } : p
         );
         dispatch(setPosts(updatedPostData));
         toast.success(res.data.message);
@@ -114,7 +114,7 @@ function Post({ post }) {
   const bookmarkHandler = async () => {
     try {
       const res = await axios.get(
-        `https://instaflow.onrender.com/api/v2/post/${post._id}/saved`,
+        `https://instaflow.onrender.com/api/v2/post/${post?._id}/saved`,
         {
           withCredentials: true,
         }
@@ -141,7 +141,7 @@ function Post({ post }) {
           </Avatar>
           <div className="flex items-center gap-3">
             <h1>{post.author?.username}</h1>
-            {user?._id === post.author._id && <Badge>Author</Badge>}
+            {user?._id === post.author?._id && <Badge>Author</Badge>}
           </div>
         </div>
         <Dialog>
@@ -160,7 +160,7 @@ function Post({ post }) {
             <Button variant="ghost" className="cursor-pointer w-fit ">
               Add to favorites
             </Button>
-            {user && user?._id === post?.author._id && (
+            {user && user?._id === post?.author?._id && (
               <Button
                 onClick={deletePostHandler}
                 variant="ghost"

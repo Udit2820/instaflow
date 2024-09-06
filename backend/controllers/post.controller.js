@@ -31,7 +31,7 @@ export const addNewPost = async (req, res) => {
 
     const user = await User.findById(authorId);
     if (user) {
-      user.posts.push(post._id);
+      user.posts.push(post?._id);
       await user.save();
     }
 
@@ -193,7 +193,7 @@ export const addComment = async (req, res) => {
       path: "author",
       select: "username profilePicture",
     });
-    post.comments.push(comment._id);
+    post.comments.push(comment?._id);
     await post.save();
     return res.status(201).json({
       message: "Comment added successfully",
@@ -267,8 +267,8 @@ export const bookmarkPost = async (req, res) => {
         .json({ message: "Post not found", success: false });
 
     const user = await User.findById(authorId);
-    if (user.Saved.includes(post._id)) {
-      await user.updateOne({ $pull: { Saved: post._id } });
+    if (user.Saved.includes(post?._id)) {
+      await user.updateOne({ $pull: { Saved: post?._id } });
       await user.save();
       return res
         .status(200)
@@ -278,7 +278,7 @@ export const bookmarkPost = async (req, res) => {
           success: true,
         });
     } else {
-      await user.updateOne({ $addToSet: { Saved: post._id } });
+      await user.updateOne({ $addToSet: { Saved: post?._id } });
       await user.save();
       return res
         .status(200)

@@ -56,7 +56,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
     if(user){
-      const socketio = io('https://instaflow.onrender.com',{
+      const socketio = io('https://instaflow.onrender.com/',{
         query:{
           userId:user?._id,
         },
@@ -65,8 +65,8 @@ function App() {
       dispatch(setSocket(socketio));
 
       //listen all the events
-      socketio.on('getOnLineUsers',(onLineUsers) => {
-        dispatch(setOnlineUsers(onLineUsers));
+      socketio.on('getOnlineUsers',(onlineUsers) => {
+        dispatch(setOnlineUsers(onlineUsers));
       });
       socketio.on('notification', (notification) => {
         dispatch(setLikeNotification(notification));

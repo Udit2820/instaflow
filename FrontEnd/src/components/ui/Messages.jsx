@@ -32,7 +32,7 @@ const Messages = ({ selectedUser }) => {
           messages.map((msg) => {
             return (
               <div
-                key={msg._id}
+                key={msg?._id}
                 className={`flex ${
                   msg.senderId === user?._id ? "justify-end" : "justify-start"
                 }`}
