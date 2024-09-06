@@ -8,7 +8,6 @@ import CommentDialog from "./CommentDialog";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "sonner";
-import store from "@/redux/store";
 import { setPosts, setSelectedPost } from "@/redux/postSlice";
 import { Badge } from "./badge";
 

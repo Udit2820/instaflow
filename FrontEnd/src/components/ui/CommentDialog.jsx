@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Dialog, DialogContent } from "./dialog";
+import { Dialog, DialogContent, DialogTrigger } from "./dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Link } from "react-router-dom";
-import { DialogTrigger } from "@radix-ui/react-dialog";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "./button";
-import store from "@/redux/store";
-import { setPosts } from "@/redux/postSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { setPosts } from "@/redux/postSlice";
 import Comment from "./Comment";
 import axios from "axios";
 import { toast } from "sonner";

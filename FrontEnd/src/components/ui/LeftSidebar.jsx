@@ -22,9 +22,7 @@ import { Button } from "./button";
 function LeftSidebar() {
   const navigate = useNavigate();
   const { user } = useSelector(store => store.auth);
-  const { likeNotification } = useSelector(
-    store => store.realTimeNotification
-  );
+  const { likeNotification } = useSelector(store =>store.realTimeNotification);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
