@@ -3,7 +3,7 @@ import Post from "./Post";
 import { useSelector } from "react-redux";
 
 function Posts() {
-  const { posts } = useSelector((store) => store.post);
+  const { posts } = useSelector(store => store.post);
 
   if (!posts || posts.length === 0) {
     return <p>No posts available.</p>;

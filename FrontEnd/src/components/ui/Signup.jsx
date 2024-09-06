@@ -14,7 +14,7 @@ function Signup() {
     password: "",
   });
   const [loading, setLoading] = useState(false);
-  const { user } = useSelector((store) => store.auth);
+  const { user } = useSelector(store => store.auth);
   const navigate = useNavigate();
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });

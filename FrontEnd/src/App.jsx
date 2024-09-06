@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
-import './App.css'
-import { Button } from './components/ui/button'
-import Signup from './components/ui/Signup'
-import { createBrowserRouter,RouterProvider } from 'react-router-dom'
-import { Route } from 'lucide-react'
+import ChatPage from './components/ui/ChatPage'
+import EditProfile from './components/ui/EditProfile'
 import MainLayout from './components/ui/MainLayout'
 import Home from './components/ui/Home'
 import Login from './components/ui/Login'
 import Profile from './components/ui/Profile'
-import EditProfile from './components/ui/EditProfile'
-import ChatPage from './components/ui/ChatPage'
+import Signup from './components/ui/Signup'
+import './App.css'
+import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import { io } from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux'
 import { setSocket } from './redux/socketSlice'
@@ -56,7 +54,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
     if(user){
-      const socketio = io('https://instaflow.onrender.com/',{
+      const socketio = io('https://instaflow.onrender.com',{
         query:{
           userId:user?._id,
         },
