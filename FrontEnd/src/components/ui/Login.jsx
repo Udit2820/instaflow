@@ -62,7 +62,7 @@ function Login() {
         className="shadow-lg flex flex-col gap-5 p-8"
       >
         <div className="my-4">
-          <h1 className="text-center font-bold text-xl">LOGO</h1>
+          <h1 className="text-center font-bold text-xl">InstaFlow</h1>
           <p className="text-sm text-center">
             Login To see photos and videos from your friends
           </p>
